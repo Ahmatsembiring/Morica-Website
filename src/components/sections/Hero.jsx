@@ -69,7 +69,7 @@ const Hero = () => {
         >
           <div className="relative z-10 bg-white p-6 rounded-3xl shadow-2xl border border-morica/10 transform rotate-2 hover:rotate-0 transition-transform duration-500">
             <img 
-              src="/images/product/product-hero.png" 
+              src="/images/product/logo1.png" 
               alt="Morica Obat Nyamuk Bakar Alami" 
               className="w-full h-auto object-cover rounded-2xl bg-gray-100 min-h-[400px]"
             />
