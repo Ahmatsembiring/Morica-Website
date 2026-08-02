@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 import Button from '../ui/Button';
@@ -7,6 +8,7 @@ import { WHATSAPP_LINK } from '../../utils/constants';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -15,12 +17,14 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Beranda', href: '#home' },
-    { name: 'Tentang', href: '#about' },
-    { name: 'Keunggulan', href: '#features' },
-    { name: 'Cara Pakai', href: '#how-to-use' },
-    { name: 'Tim', href: '#team' },
+    { name: 'Beranda', path: '/' },
+    { name: 'Tentang', path: '/tentang' },
+    { name: 'Keunggulan', path: '/keunggulan' },
+    { name: 'Cara Pakai', path: '/cara-pakai' },
+    { name: 'Tim', path: '/tim' },
   ];
+
+  const isActive = (path) => location.pathname === path;
 
   return (
     <motion.nav
@@ -35,26 +39,30 @@ const Navbar = () => {
     >
       <div className="container-custom px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2 z-50">
+        <Link to="/" className="flex items-center gap-2 z-50">
           <img
             src="/images/logo.png"
             alt="Morica Logo"
             className="h-12 w-auto object-contain"
           />
-        </a>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.href}
-              className={`text-sm font-medium hover:text-morica transition-colors ${
-                scrolled ? 'text-gray-700' : 'text-forest/80'
+              to={link.path}
+              className={`text-sm font-medium transition-colors ${
+                isActive(link.path)
+                  ? 'text-morica font-semibold'
+                  : scrolled
+                  ? 'text-gray-700 hover:text-morica'
+                  : 'text-forest/80 hover:text-morica'
               }`}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           <a
             href={WHATSAPP_LINK}
@@ -87,14 +95,16 @@ const Navbar = () => {
               className="fixed inset-0 bg-cream z-40 flex flex-col items-center justify-center gap-8 md:hidden"
             >
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className="text-3xl font-display font-bold text-forest hover:text-morica transition-colors"
+                  className={`text-3xl font-display font-bold transition-colors ${
+                    isActive(link.path) ? 'text-morica' : 'text-forest'
+                  }`}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
               <a
                 href={WHATSAPP_LINK}
