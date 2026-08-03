@@ -1,10 +1,10 @@
-import About from '../components/sections/About'
+import Team from '../components/sections/Team'
 import CTA from '../components/sections/CTA'
 
 const TeamPage = () => {
   return (
     <div className="pt-20">
-      <About />
+      <Team />
       <CTA />
     </div>
   )

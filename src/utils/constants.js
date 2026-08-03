@@ -6,12 +6,59 @@ export const SOCIAL_MEDIA = {
   tiktok: "https://tiktok.com/@morica.official",
 };
 
+// export const TEAM_MEMBERS = [
+//   { name: "Rihan Rifqi", role: "Ketua Tim", nim: "123420028" },
+//   { name: "Arta Sigalingging", role: "Anggota", nim: "123420008" },
+//   { name: "M. I Ambro Yokamperil", role: "Anggota", nim: "123420027" },
+//   { name: "Fathun Rahman Asrul", role: "Anggota", nim: "123420063" },
+//   { name: "Antoni Saputra", role: "Anggota", nim: "123420072" },
+// ];
 export const TEAM_MEMBERS = [
-  { name: "Rihan Rifqi", role: "Ketua Tim", nim: "123420028" },
-  { name: "Arta Sigalingging", role: "Anggota", nim: "123420008" },
-  { name: "M. I Ambro Yokamperil", role: "Anggota", nim: "123420027" },
-  { name: "Fathun Rahman Asrul", role: "Anggota", nim: "123420063" },
-  { name: "Antoni Saputra", role: "Anggota", nim: "123420072" },
+  {
+    name: "Rihan Rifqi",
+    role: "Ketua Tim",
+    division: "Manajemen & Strategi",
+    nim: "123420028",
+    email: "rihan.123420028@student.itera.ac.id",
+    phone: "+62 823-8418-8310",
+    quote: "Mewujudkan inovasi alami yang berdampak nyata bagi kesehatan masyarakat dan kelestarian lingkungan."
+  },
+  {
+    name: "Arta Sigalingging",
+    role: "Anggota",
+    division: "R&D dan Formulasi",
+    nim: "123420008",
+    email: "arta.123420008@student.itera.ac.id",
+    phone: "+62 882-8711-2901",
+    quote: "Memastikan setiap takaran bahan alami teruji secara ilmiah untuk efektivitas maksimal."
+  },
+  {
+    name: "M. I. Ambro Yokamperil",
+    role: "Anggota",
+    division: "Produksi & Quality Control",
+    nim: "123420027",
+    email: "ambro.123420027@student.itera.ac.id",
+    phone: "+62 857-8895-6796",
+    quote: "Menjaga standar kualitas tertinggi dari proses pencetakan hingga pengemasan akhir."
+  },
+  {
+    name: "Fathun Rahman Asrul",
+    role: "Anggota",
+    division: "Pemasaran & Digital",
+    nim: "123420063",
+    email: "fathun.123420063@student.itera.ac.id",
+    phone: "+62 878-8348-1858",
+    quote: "Mengedukasi masyarakat tentang bahaya kimia sintetis melalui konten yang menarik."
+  },
+  {
+    name: "Antoni Saputra",
+    role: "Anggota",
+    division: "Keuangan & Operasional",
+    nim: "123420072",
+    email: "antoni.123420072@student.itera.ac.id",
+    phone: "+62 856-0981-7163",
+    quote: "Mengelola sumber daya secara efisien agar produk tetap terjangkau dan berkualitas."
+  },
 ];
 
 export const INGREDIENTS = [
