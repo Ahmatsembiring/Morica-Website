@@ -1,18 +1,35 @@
+// ==========================================
+// KONTAK & MEDIA SOSIAL
+// ==========================================
 export const WHATSAPP_NUMBER = "6282384188310";
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo%20Morica,%20saya%20tertarik%20dengan%20produk%20obat%20nyamuk%20bakar%20alaminya.`;
+
+export const CONTACT_INFO = {
+  whatsappDisplay: "+62 823-8418-8310",
+  email: "rihan.123420028@student.itera.ac.id",
+  address: "Institut Teknologi Sumatera (ITERA), Lampung Selatan",
+};
 
 export const SOCIAL_MEDIA = {
   instagram: "https://instagram.com/morica.official",
   tiktok: "https://tiktok.com/@morica.official",
 };
 
-// export const TEAM_MEMBERS = [
-//   { name: "Rihan Rifqi", role: "Ketua Tim", nim: "123420028" },
-//   { name: "Arta Sigalingging", role: "Anggota", nim: "123420008" },
-//   { name: "M. I Ambro Yokamperil", role: "Anggota", nim: "123420027" },
-//   { name: "Fathun Rahman Asrul", role: "Anggota", nim: "123420063" },
-//   { name: "Antoni Saputra", role: "Anggota", nim: "123420072" },
-// ];
+// ==========================================
+// INFORMASI PRODUK
+// ==========================================
+export const PRODUCT_INFO = {
+  name: "Morica",
+  tagline: "Small Innovation with Maximum Impact!",
+  price: "Rp 15.000",
+  originalPrice: "Rp 20.000",
+  quantity: "10 Keping Spiral",
+  description: "Obat nyamuk bakar alami berbasis bioteknologi dari Daun Kelor & Eucalyptus Pelangi.",
+};
+
+// ==========================================
+// DATA TIM (Sesuai Proposal PKKM 2026)
+// ==========================================
 export const TEAM_MEMBERS = [
   {
     name: "Rihan Rifqi",
@@ -61,6 +78,20 @@ export const TEAM_MEMBERS = [
   },
 ];
 
+// ==========================================
+// DOSEN PEMBIMBING
+// ==========================================
+export const DOSEN_PEMBIMBING = {
+  name: "Maeda Wahyuningrum, S.Hut., M.Si.",
+  nip: "199609072024212053",
+  email: "maeda.wahyuningrum@rh.itera.ac.id",
+  phone: "+62 851-8199-464",
+  prodi: "Rekayasa Kehutanan",
+};
+
+// ==========================================
+// KOMPOSISI BAHAN (Sesuai Bab 3.2 Proposal)
+// ==========================================
 export const INGREDIENTS = [
   {
     title: "Daun Kelor",
@@ -70,18 +101,18 @@ export const INGREDIENTS = [
     img: "/images/ingredients/kelor.png"
   },
   {
-    title: "Eucalyptus Pelangi",
-    scientific: "Eucalyptus deglupta",
-    percentage: "10%",
-    desc: "Mengandung minyak atsiri (eucalyptol & limonene) yang mengganggu sistem penciuman nyamuk.",
-    img: "/images/ingredients/eucalyptus.png"
-  },
-  {
-    title: "Tempurung Kelapa",
+    title: "Serbuk Tempurung Kelapa",
     scientific: "Coconut Shell",
     percentage: "35%",
     desc: "Bahan bakar organik yang mendukung teknologi Low Smoke dengan emisi asap sangat rendah.",
     img: "/images/ingredients/coconut.png"
+  },
+  {
+    title: "Minyak Atsiri Eucalyptus",
+    scientific: "Eucalyptus deglupta",
+    percentage: "10%",
+    desc: "Mengandung eucalyptol dan limonene yang mengganggu sistem penciuman nyamuk.",
+    img: "/images/ingredients/eucalyptus.png"
   },
   {
     title: "Tepung Tapioka",
@@ -92,9 +123,12 @@ export const INGREDIENTS = [
   }
 ];
 
+// ==========================================
+// KEUNGGULAN PRODUK
+// ==========================================
 export const FEATURES = [
   {
-    icon: "🌿",
+    icon: "",
     title: "100% Bahan Alami",
     desc: "Tanpa DEET, Transfluthrin, atau bahan kimia sintetis berbahaya lainnya."
   },
@@ -109,12 +143,12 @@ export const FEATURES = [
     desc: "Formulasi herbal yang aman untuk keluarga dengan anak kecil."
   },
   {
-    icon: "",
+    icon: "🌍",
     title: "Ramah Lingkungan",
     desc: "Biodegradable dan mendukung keberlanjutan sumber daya alam."
   },
   {
-    icon: "⏰",
+    icon: "",
     title: "Tahan 6-8 Jam",
     desc: "Perlindungan optimal sepanjang malam dengan satu spiral."
   },
@@ -125,6 +159,9 @@ export const FEATURES = [
   }
 ];
 
+// ==========================================
+// CARA PENGGUNAAN
+// ==========================================
 export const HOW_TO_USE = [
   {
     step: "1",
@@ -143,6 +180,9 @@ export const HOW_TO_USE = [
   }
 ];
 
+// ==========================================
+// TESTIMONI PELANGGAN
+// ==========================================
 export const TESTIMONIALS = [
   {
     name: "Ibu Siti Rahayu",
