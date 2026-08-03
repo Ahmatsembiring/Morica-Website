@@ -169,7 +169,6 @@ const CTA = () => {
             className="flex flex-wrap justify-center gap-3 mb-12"
           >
             {[
-              { icon: Shield, text: "Teruji Klinis" },
               { icon: Heart, text: "Aman untuk Bayi" },
               { icon: Zap, text: "Efektif 8 Jam" },
             ].map((item, index) => (
@@ -184,45 +183,7 @@ const CTA = () => {
             ))}
           </motion.div>
 
-          {/* Price Card */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, type: "spring" }}
-            className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/20 shadow-2xl mb-10"
-          >
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="text-center md:text-left">
-                <p className="text-gray-400 text-sm mb-2">Harga Spesial Promo</p>
-                <div className="flex items-baseline gap-4 justify-center md:justify-start">
-                  <p className="text-2xl text-gray-500 line-through">{PRODUCT_INFO.originalPrice}</p>
-                  <p className="text-5xl md:text-6xl font-display font-bold text-white">{PRODUCT_INFO.price}</p>
-                </div>
-                <p className="text-morica-light text-sm mt-2 font-semibold">
-                  Hemat Rp 5.000! • {PRODUCT_INFO.quantity}
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-3">
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button className="!bg-gradient-to-r !from-morica !to-emerald-500 !text-white hover:!from-morica-light hover:!to-morica !px-10 !py-5 !text-lg shadow-2xl shadow-morica/40 !rounded-full group">
-                      <Phone size={22} />
-                      Pesan Sekarang
-                      <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </motion.div>
-                </a>
-                <p className="text-gray-400 text-xs text-center">
-                  ⚡ Respon cepat dalam 5 menit
-                </p>
-              </div>
-            </div>
-          </motion.div>
+         
 
           {/* Trust Indicators */}
           <motion.div

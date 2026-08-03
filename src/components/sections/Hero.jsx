@@ -124,8 +124,8 @@ const Hero = () => {
               <p className="text-[10px] sm:text-xs text-morica-light font-semibold uppercase tracking-wider">
                 Harga Spesial
               </p>
-              <p className="text-xl sm:text-2xl font-display font-bold whitespace-nowrap">Rp 15.000</p>
-              <p className="text-[10px] sm:text-xs text-gray-300">10 Keping Spiral</p>
+              <p className="text-xl sm:text-2xl font-display font-bold whitespace-nowrap">Hanya Rp 15.000</p>
+              <p className="text-[10px] sm:text-xs text-gray-300">untuk 1 Keping</p>
             </div>
 
             {/* Low smoke badge */}
