@@ -1,7 +1,7 @@
 // ==========================================
 // KONTAK & MEDIA SOSIAL
 // ==========================================
-export const WHATSAPP_NUMBER = "085840663868";
+export const WHATSAPP_NUMBER = "858-4066-3868";
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo%20Morica,%20saya%20tertarik%20dengan%20produk%20obat%20nyamuk%20bakar%20alaminya.`;
 
 export const CONTACT_INFO = {

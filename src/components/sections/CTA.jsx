@@ -169,7 +169,6 @@ const CTA = () => {
             className="flex flex-wrap justify-center gap-3 mb-12"
           >
             {[
-              { icon: Heart, text: "Aman untuk Bayi" },
               { icon: Zap, text: "Efektif 8 Jam" },
             ].map((item, index) => (
               <motion.div
