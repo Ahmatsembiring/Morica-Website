@@ -1,11 +1,11 @@
 // ==========================================
 // KONTAK & MEDIA SOSIAL
 // ==========================================
-export const WHATSAPP_NUMBER = "6282384188310";
+export const WHATSAPP_NUMBER = "085840663868";
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Halo%20Morica,%20saya%20tertarik%20dengan%20produk%20obat%20nyamuk%20bakar%20alaminya.`;
 
 export const CONTACT_INFO = {
-  whatsappDisplay: "+62 823-8418-8310",
+  whatsappDisplay: "+62 858-4066-3868",
   email: "rihan.123420028@student.itera.ac.id",
   address: "Institut Teknologi Sumatera (ITERA), Lampung Selatan",
 };
