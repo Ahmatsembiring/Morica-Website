@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { 
   Leaf, Wind, Baby, Clock, Flower2, Globe, 
-  CheckCircle2, XCircle, FlaskConical, ShieldCheck 
+  CheckCircle2, XCircle, FlaskConical, ShieldCheck,
+  FileText, Award, ExternalLink, Download
 } from 'lucide-react';
 import SectionTitle from '../ui/SectionTitle';
 import { fadeInUp, staggerContainer } from '../../utils/animations';
@@ -53,13 +54,37 @@ const COMPARISON_DATA = [
   { label: 'Dampak Lingkungan', morica: 'Biodegradable & Ramah Lingkungan', regular: 'Kontaminasi Udara Ruangan' },
 ];
 
+const LEGAL_DOCS = [
+  {
+    icon: FileText,
+    tag: 'Legalitas Usaha',
+    title: 'NIB (Nomor Induk Berusaha)',
+    desc: 'Dokumen legalitas usaha resmi Morica sebagai bukti pendaftaran usaha yang sah.',
+    url: '/docs/nib.pdf'
+  },
+  {
+    icon: Award,
+    tag: 'HAKI',
+    title: 'Surat Cipta',
+    desc: 'Dokumen perlindungan hak kekayaan intelektual atas inovasi dan karya Morica.',
+    url: '/docs/surat-cipta.pdf'
+  }
+];
+
 const Features = () => {
   return (
     <section id="features" className="relative section-padding bg-gradient-to-b from-cream via-white to-cream-light overflow-hidden">
-      {/* Background Decoration */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-morica-light/20 rounded-full blur-[120px]"></div>
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-forest/5 rounded-full blur-[120px]"></div>
+      {/* Background Decoration Ringan */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div 
+          className="absolute inset-0 opacity-50"
+          style={{
+            backgroundImage: 'radial-gradient(circle, rgba(16,185,129,0.06) 1px, transparent 1px)',
+            backgroundSize: '28px 28px'
+          }}
+        />
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-morica-light/10 rounded-full"></div>
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-forest/5 rounded-full"></div>
       </div>
 
       <div className="container-custom px-6 relative z-10">
@@ -185,17 +210,98 @@ const Features = () => {
           </motion.div>
         </div>
 
+        {/* =============================== */}
+        {/* SECTION LEGALITAS / PDF DOKUMEN */}
+        {/* =============================== */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-24 mb-10 text-center"
+        >
+          <span className="inline-block px-4 py-1.5 mb-4 text-xs font-bold tracking-wider text-morica-darker uppercase bg-morica-light rounded-full">
+            <ShieldCheck className="w-3 h-3 inline mr-1" /> Legalitas Resmi
+          </span>
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-forest mb-4">
+            Legalitas & Sertifikasi
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Morica telah dilengkapi dokumen legal resmi yang dapat dilihat dan diunduh sebagai bentuk transparansi dan kepercayaan produk.
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-20"
+        >
+          {LEGAL_DOCS.map((doc, index) => {
+            const Icon = doc.icon;
+            return (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                whileHover={{ y: -6 }}
+                className="bg-white p-7 rounded-3xl border border-morica/10 shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-morica/10 text-morica rounded-2xl flex items-center justify-center shrink-0">
+                    <Icon className="w-6 h-6" strokeWidth={1.8} />
+                  </div>
+
+                  <div>
+                    <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-morica-darker bg-morica-light/40 px-2.5 py-1 rounded-full">
+                      {doc.tag}
+                    </span>
+                    <h3 className="text-lg font-display font-bold text-forest mt-2">
+                      {doc.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm mt-2 leading-relaxed">
+                      {doc.desc}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href={doc.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 bg-forest text-white text-sm font-semibold rounded-xl hover:bg-morica transition-colors duration-300"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Lihat PDF
+                  </a>
+
+                  <a
+                    href={doc.url}
+                    download
+                    className="inline-flex items-center gap-2 px-4 py-2.5 bg-morica/10 text-morica-darker text-sm font-semibold rounded-xl hover:bg-morica/20 transition-colors duration-300"
+                  >
+                    <Download className="w-4 h-4" />
+                    Unduh
+                  </a>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
         {/* Bottom Trust Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 flex flex-col md:flex-row items-center justify-center gap-4 text-center bg-white p-6 rounded-2xl shadow-md border border-morica/10 max-w-3xl mx-auto"
+          className="flex flex-col md:flex-row items-center justify-center gap-4 text-center bg-white p-6 rounded-2xl shadow-md border border-morica/10 max-w-3xl mx-auto"
         >
           <ShieldCheck className="w-10 h-10 text-morica" />
           <div>
             <h4 className="font-display font-bold text-forest text-lg">Terbukti Efektif & Aman</h4>
-            <p className="text-gray-600 text-sm">Telah melalui uji efektivitas pengusiran nyamuk dan validasi pasar nyata di lingkungan ITERA.</p>
+            <p className="text-gray-600 text-sm">
+              Telah melalui uji efektivitas pengusiran nyamuk dan validasi pasar nyata di lingkungan ITERA.
+            </p>
           </div>
         </motion.div>
       </div>
