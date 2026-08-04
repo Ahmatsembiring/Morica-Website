@@ -125,7 +125,7 @@ const Hero = () => {
                 Harga Spesial
               </p>
               <p className="text-xl sm:text-2xl font-display font-bold whitespace-nowrap">Hanya Rp 15.000</p>
-              <p className="text-[10px] sm:text-xs text-gray-300">untuk 1 Keping</p>
+              <p className="text-[10px] sm:text-xs text-gray-300">untuk 1 item</p>
             </div>
 
             {/* Low smoke badge */}
