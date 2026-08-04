@@ -5,7 +5,7 @@ import { WHATSAPP_LINK, PRODUCT_INFO } from '../../utils/constants';
 import { useEffect, useState } from 'react';
 
 // 💾 Simpan gambar MVP (orang digigit nyamuk) ke public/images, lalu sesuaikan path ini
-const MOSQUITO_BITE_IMG = '/images/product/image.png';
+const MOSQUITO_BITE_IMG = '/images/product/image.jpeg';
 
 const CTA = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
