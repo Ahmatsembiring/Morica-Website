@@ -7,7 +7,20 @@ import { fadeInUp, staggerContainer } from '../../utils/animations';
 const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-cream">
-      {/* Background texture & blobs */}
+      {/* ============================================ */}
+      {/* BACKGROUND IMAGE — ubah opacity-40 di sini kalau mau lebih/kurang terang */}
+      {/* ============================================ */}
+      <div
+        className="absolute inset-0 opacity-50 bg-[url('/images/backgrounds/bg-1.jpeg')] bg-cover bg-center pointer-events-none"
+        aria-hidden="true"
+      />
+      {/* Overlay tipis biar teks tetap kebaca — ubah cream/30 & cream/50 kalau mau lebih/kurang gelap */}
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-cream/30 via-transparent to-cream/50 pointer-events-none"
+        aria-hidden="true"
+      />
+
+      {/* Background texture & blobs (dekorasi asli, tetap dipertahankan) */}
       <div className="absolute inset-0 opacity-[0.04] bg-[url('/images/backgrounds/leaf-pattern.svg')] bg-cover bg-center" />
       <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] bg-gradient-to-br from-morica-light/40 to-morica/10 blur-[100px] rounded-full" />
       <div className="absolute bottom-0 left-0 w-[24rem] h-[24rem] bg-gradient-to-tr from-forest/10 to-transparent blur-[90px] rounded-full" />
@@ -18,7 +31,7 @@ const Hero = () => {
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="space-y-7 text-center lg:text-left"
+          className="relative space-y-7 text-center lg:text-left"
         >
           <motion.div
             variants={fadeInUp}
@@ -35,7 +48,7 @@ const Hero = () => {
             className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-forest leading-[1.1] tracking-tight"
           >
             Bebas Nyamuk <br className="hidden sm:block" />
-            <span className="relative inline-block text-morica">
+            <span className="relative inline-block text-forest-dark">
               Tanpa Batuk
               <svg
                 className="absolute left-0 -bottom-2 w-full"
@@ -57,7 +70,7 @@ const Hero = () => {
 
           <motion.p
             variants={fadeInUp}
-            className="text-lg text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+            className="text-lg text-gray-900 max-w-xl mx-auto lg:mx-0 leading-relaxed"
           >
             Morica adalah obat nyamuk bakar alami dari{' '}
             <span className="font-semibold text-forest">Daun Kelor & Eucalyptus Pelangi</span>.
