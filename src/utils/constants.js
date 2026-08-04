@@ -98,14 +98,14 @@ export const INGREDIENTS = [
     scientific: "Moringa oleifera",
     percentage: "50%",
     desc: "Kaya akan flavonoid dan tanin yang berfungsi sebagai insektisida alami untuk mengusir nyamuk secara efektif.",
-    img: "/images/ingredients/kelor.png"
+    img: "/images/ingredients/gambar1.png"
   },
   {
     title: "Serbuk Tempurung Kelapa",
     scientific: "Coconut Shell",
     percentage: "35%",
     desc: "Bahan bakar organik yang mendukung teknologi Low Smoke dengan emisi asap sangat rendah.",
-    img: "/images/ingredients/coconut.png"
+    img: "/images/ingredients/gambar2.png"
   },
   {
     title: "Minyak Atsiri Eucalyptus",
