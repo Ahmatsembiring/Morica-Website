@@ -1,12 +1,18 @@
 import { motion } from 'framer-motion';
-import { PackageOpen, Flame, ShieldCheck, Sparkles, Clock, Wind, Leaf } from 'lucide-react';
+import { Clock, Wind, Leaf } from 'lucide-react';
 import SectionTitle from '../ui/SectionTitle';
 import { HOW_TO_USE } from '../../utils/constants';
 import { fadeInUp, staggerContainer } from '../../utils/animations';
 
 const HowToUse = () => {
-  // Ikon untuk tiap langkah (bisa disesuaikan dengan isi HOW_TO_USE)
-  const stepIcons = [PackageOpen, Flame, ShieldCheck];
+  // Gambar berada di folder public → tidak perlu import
+  // Struktur saat ini: public/images/team/img1.png
+  // (Jika nanti file dipindah langsung ke public/images, tinggal ganti jadi '/images/img1.png')
+  const stepImages = [
+    '/images/team/img1.png',
+    '/images/team/img2.png',
+    '/images/team/img3.png',
+  ];
 
   return (
     <section id="how-to-use" className="section-padding bg-white relative overflow-hidden">
@@ -33,7 +39,7 @@ const HowToUse = () => {
 
         {/* ===== TIMELINE LANGKAH ===== */}
         <div className="relative mt-4">
-          {/* Garis penghubung antar ikon (hanya desktop) */}
+          {/* Garis penghubung antar langkah (hanya desktop) */}
           <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] border-t-2 border-dashed border-morica/25 z-0" />
 
           <motion.div
@@ -44,17 +50,21 @@ const HowToUse = () => {
             className="grid md:grid-cols-3 gap-10 md:gap-8 relative z-10"
           >
             {HOW_TO_USE.map((step, index) => {
-              const Icon = stepIcons[index] || Sparkles;
               return (
                 <motion.div
                   key={index}
                   variants={fadeInUp}
                   className="relative flex flex-col items-center group"
                 >
-                  {/* Lingkaran ikon dengan gradasi */}
+                  {/* ===== LINGKARAN DENGAN GAMBAR LANGKAH ===== */}
                   <div className="relative z-10">
-                    <div className="w-24 h-24 rounded-full bg-gradient-to-br from-morica to-forest flex items-center justify-center shadow-lg shadow-morica/30 ring-8 ring-white transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3">
-                      <Icon className="w-10 h-10 text-white" strokeWidth={1.5} />
+                    <div className="w-24 h-24 rounded-full bg-gradient-to-br from-morica to-forest shadow-lg shadow-morica/30 ring-8 ring-white transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 overflow-hidden">
+                      <img
+                        src={stepImages[index]}
+                        alt={`Langkah ${step.step} - ${step.title}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     {/* Badge nomor langkah */}
                     <span className="absolute -top-1 -right-1 w-8 h-8 bg-yellow-400 text-forest rounded-full flex items-center justify-center text-sm font-bold border-4 border-white shadow-md">
@@ -81,7 +91,7 @@ const HowToUse = () => {
           </motion.div>
         </div>
 
-        {/* ===== BANNER INFO DURASI (Lebih Kaya) ===== */}
+        {/* ===== BANNER INFO DURASI ===== */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
