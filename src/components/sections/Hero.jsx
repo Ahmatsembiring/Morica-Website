@@ -1,26 +1,32 @@
-import { motion } from 'framer-motion';
-import { ArrowRight, Star, ShieldCheck, Leaf, Sparkles } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Star, ShieldCheck, Leaf, Sparkles, Play, X } from 'lucide-react';
 import Button from '../ui/Button';
 import { WHATSAPP_LINK } from '../../utils/constants';
 import { fadeInUp, staggerContainer } from '../../utils/animations';
 
+const YOUTUBE_ID = 'J5AvngmL1b4';
+
 const Hero = () => {
+  const [videoExpanded, setVideoExpanded] = useState(false);
+  const [thumbSrc, setThumbSrc] = useState(
+    `https://img.youtube.com/vi/${YOUTUBE_ID}/maxresdefault.jpg`
+  );
+
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-cream">
       {/* ============================================ */}
-      {/* BACKGROUND IMAGE — ubah opacity-40 di sini kalau mau lebih/kurang terang */}
+      {/* BACKGROUND IMAGE */}
       {/* ============================================ */}
       <div
         className="absolute inset-0 opacity-50 bg-[url('/images/backgrounds/bg-1.jpeg')] bg-cover bg-center pointer-events-none"
         aria-hidden="true"
       />
-      {/* Overlay tipis biar teks tetap kebaca — ubah cream/30 & cream/50 kalau mau lebih/kurang gelap */}
       <div
         className="absolute inset-0 bg-gradient-to-b from-cream/30 via-transparent to-cream/50 pointer-events-none"
         aria-hidden="true"
       />
 
-      {/* Background texture & blobs (dekorasi asli, tetap dipertahankan) */}
       <div className="absolute inset-0 opacity-[0.04] bg-[url('/images/backgrounds/leaf-pattern.svg')] bg-cover bg-center" />
       <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] bg-gradient-to-br from-morica-light/40 to-morica/10 blur-[100px] rounded-full" />
       <div className="absolute bottom-0 left-0 w-[24rem] h-[24rem] bg-gradient-to-tr from-forest/10 to-transparent blur-[90px] rounded-full" />
@@ -91,6 +97,95 @@ const Hero = () => {
             </a>
           </motion.div>
 
+          {/* ============================================ */}
+          {/* VIDEO YOUTUBE — thumbnail kecil, klik = membesar di tempat yang sama */}
+          {/* ============================================ */}
+          <motion.div
+            variants={fadeInUp}
+            className="flex justify-center lg:justify-start pt-2"
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              {!videoExpanded ? (
+                /* ---------- KONDISI KECIL: hanya thumbnail (bukan player) ---------- */
+                <motion.button
+                  key="thumb"
+                  type="button"
+                  onClick={() => setVideoExpanded(true)}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.25 }}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="relative block w-60 sm:w-72 overflow-hidden rounded-xl shadow-lg shadow-forest/20 border-2 border-white group cursor-pointer text-left bg-gray-200"
+                  aria-label="Tonton video Morica"
+                >
+                  <div className="relative aspect-video">
+                    <img
+                      src={thumbSrc}
+                      onError={() => setThumbSrc(`https://img.youtube.com/vi/${YOUTUBE_ID}/hqdefault.jpg`)}
+                      alt="Thumbnail video Morica - Obat Nyamuk Bakar Alami"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+
+                    {/* Gradient biar teks kebaca */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+
+                    {/* Play button di tengah */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <span className="relative flex items-center justify-center w-12 h-12 rounded-full bg-morica shadow-lg shadow-black/30 group-hover:scale-110 transition-transform duration-300">
+                        <Play size={20} className="text-white fill-white ml-0.5" />
+                      </span>
+                    </div>
+
+                    {/* Label bawah */}
+                    <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between pointer-events-none">
+                      <p className="text-xs font-bold text-white drop-shadow">Tonton Video</p>
+                      <span className="text-[10px] font-semibold text-white bg-black/50 backdrop-blur-sm px-1.5 py-0.5 rounded">
+                        ▶ YouTube
+                      </span>
+                    </div>
+                  </div>
+                </motion.button>
+              ) : (
+                /* ---------- KONDISI BESAR: player muncul di posisi yang sama ---------- */
+                <motion.div
+                  key="player"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                  className="relative w-full max-w-xl"
+                >
+                  <div className="relative aspect-video rounded-xl overflow-hidden bg-black shadow-2xl shadow-forest/30 border-2 border-white">
+                    <iframe
+                      className="absolute inset-0 w-full h-full"
+                      src={`https://www.youtube.com/embed/${YOUTUBE_ID}?autoplay=1&rel=0&modestbranding=1`}
+                      title="Morica - Obat Nyamuk Bakar Alami"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  </div>
+
+                  {/* Tombol kecilkan video */}
+                  <button
+                    type="button"
+                    onClick={() => setVideoExpanded(false)}
+                    className="absolute -top-3 -right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-forest text-white shadow-lg hover:bg-forest-dark transition-colors"
+                    aria-label="Kecilkan video"
+                  >
+                    <X size={16} />
+                  </button>
+
+                  <p className="mt-2 text-xs text-gray-600">
+                    Klik ✕ untuk mengecilkan video
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+
           <motion.div
             variants={fadeInUp}
             className="flex items-center gap-4 justify-center lg:justify-start pt-6"
@@ -132,7 +227,6 @@ const Hero = () => {
               className="w-full h-auto object-cover rounded-2xl bg-gray-100 min-h-[380px]"
             />
 
-            {/* Price badge */}
             <div className="absolute -bottom-6 -left-4 sm:-left-6 bg-forest text-white px-5 py-4 rounded-2xl shadow-xl shadow-forest/30">
               <p className="text-[10px] sm:text-xs text-morica-light font-semibold uppercase tracking-wider">
                 Harga Spesial
@@ -141,7 +235,6 @@ const Hero = () => {
               <p className="text-[10px] sm:text-xs text-gray-300">untuk 1 item</p>
             </div>
 
-            {/* Low smoke badge */}
             <div className="absolute -top-4 -right-3 sm:-right-4 bg-white/95 backdrop-blur-sm p-2.5 sm:p-3 rounded-xl shadow-lg border border-morica/20 flex items-center gap-2">
               <div className="w-8 h-8 bg-morica-light rounded-full flex items-center justify-center text-morica-darker shrink-0">
                 <Leaf size={16} />
@@ -152,7 +245,6 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Safety badge */}
             <div className="absolute top-1/2 -left-5 sm:-left-7 -translate-y-1/2 bg-white p-2.5 rounded-xl shadow-lg border border-morica/20 hidden sm:flex items-center gap-2">
               <ShieldCheck size={16} className="text-forest" />
               <span className="text-[10px] font-bold text-forest">Aman Keluarga</span>
