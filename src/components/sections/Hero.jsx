@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Star, ShieldCheck, Leaf, Sparkles, Play, X } from 'lucide-react';
+import { ArrowRight, Star, ShieldCheck, Leaf, Sparkles, Play, X, Megaphone } from 'lucide-react';
 import Button from '../ui/Button';
 import { WHATSAPP_LINK } from '../../utils/constants';
 import { fadeInUp, staggerContainer } from '../../utils/animations';
@@ -98,15 +98,32 @@ const Hero = () => {
           </motion.div>
 
           {/* ============================================ */}
-          {/* VIDEO YOUTUBE — thumbnail kecil, klik = membesar di tempat yang sama */}
+          {/* BLOK IKLAN + VIDEO YOUTUBE */}
+          {/* Kata-kata iklan: edit teks di bagian "KATA-KATA IKLAN" */}
           {/* ============================================ */}
           <motion.div
             variants={fadeInUp}
-            className="flex justify-center lg:justify-start pt-2"
+            className="flex flex-col gap-4 pt-2 items-center lg:items-start"
           >
+            {/* ---------- KATA-KATA IKLAN ---------- */}
+            <div className="max-w-xl text-center lg:text-left">
+              <p className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-morica-darker bg-morica/15 border border-morica/20 px-3 py-1 rounded-full">
+                <Megaphone size={12} />
+                Saksikan Morica dalam Aksi
+              </p>
+              <p className="mt-2 text-lg sm:text-xl font-display font-bold text-forest leading-snug">
+                “Sekali Bakar, Nyamuk Kabur Sampai Pagi —
+                Keluarga Tetap Nyaman Bernapas.”
+              </p>
+              <p className="mt-1 text-sm text-gray-600">
+                Tanpa asap tebal, tanpa bau menyengat. 100% herbal & aman untuk si kecil.
+                Lihat bukti nyatanya! 👇
+              </p>
+            </div>
+
+            {/* ---------- VIDEO: thumbnail kecil → klik jadi besar ---------- */}
             <AnimatePresence mode="wait" initial={false}>
               {!videoExpanded ? (
-                /* ---------- KONDISI KECIL: hanya thumbnail (bukan player) ---------- */
                 <motion.button
                   key="thumb"
                   type="button"
@@ -128,17 +145,14 @@ const Hero = () => {
                       className="absolute inset-0 w-full h-full object-cover"
                     />
 
-                    {/* Gradient biar teks kebaca */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
-                    {/* Play button di tengah */}
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                       <span className="relative flex items-center justify-center w-12 h-12 rounded-full bg-morica shadow-lg shadow-black/30 group-hover:scale-110 transition-transform duration-300">
                         <Play size={20} className="text-white fill-white ml-0.5" />
                       </span>
                     </div>
 
-                    {/* Label bawah */}
                     <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between pointer-events-none">
                       <p className="text-xs font-bold text-white drop-shadow">Tonton Video</p>
                       <span className="text-[10px] font-semibold text-white bg-black/50 backdrop-blur-sm px-1.5 py-0.5 rounded">
@@ -148,7 +162,6 @@ const Hero = () => {
                   </div>
                 </motion.button>
               ) : (
-                /* ---------- KONDISI BESAR: player muncul di posisi yang sama ---------- */
                 <motion.div
                   key="player"
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -168,7 +181,6 @@ const Hero = () => {
                     />
                   </div>
 
-                  {/* Tombol kecilkan video */}
                   <button
                     type="button"
                     onClick={() => setVideoExpanded(false)}
@@ -178,8 +190,10 @@ const Hero = () => {
                     <X size={16} />
                   </button>
 
-                  <p className="mt-2 text-xs text-gray-600">
-                    Klik ✕ untuk mengecilkan video
+                  {/* Caption iklan di bawah player */}
+                  <p className="mt-3 text-xs sm:text-sm text-gray-600 text-center lg:text-left">
+                    🔥 <span className="font-semibold text-forest">Terbukti ampuh!</span> Nyamuk pergi,
+                    rumah tetap harum alami. Klik ✕ untuk mengecilkan video.
                   </p>
                 </motion.div>
               )}
